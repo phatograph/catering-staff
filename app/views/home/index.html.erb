@@ -1,0 +1,64 @@
+<div class="page-header">
+  <h2>Waiters</h2>
+</div>
+<% @waiters.each do |waiter| %>
+  <div>
+    <%= link_to waiter do %>
+      <%= waiter.full_name %>
+      <% end %>
+    <code><%= waiter.email %></code>
+  </div>
+<% end %>
+
+<div class="page-header">
+  <h2>Clients</h2>
+</div>
+<% @clients.each do |client| %>
+  <div><%= client.full_name %> <code><%= client.email %></code></div>
+<% end %>
+
+<div class="page-header">
+  <h2>
+    Events
+    <% if policy(Event).create? %>
+      <%= link_to "Add event", new_event_path, :class => 'btn btn-success' %>
+    <% end %>
+  </h2>
+</div>
+<% @events.each do |event| %>
+  <div>
+    <% if policy(event).create? %>
+      <%= link_to [:edit, event] do %>
+        <span class="label label-primary"><i class="fa fa-pencil"></i></span>
+      <% end %>
+    <% end %>
+    <% if policy(event).create? %>
+      <%= link_to event, :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+        <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+      <% end %>
+    <% end %>
+    <%= event.title %>
+    <% unless event.client.nil? %>
+      <code><%= event.client.full_name %></code>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="page-header">
+  <h2>
+    Waiter Skills
+    <% if policy(WaiterSkill).create? %>
+      <%= link_to "Add waiter skill", new_waiter_skill_path, :class => 'btn btn-success' %>
+    <% end %>
+  </h2>
+</div>
+<% @waiter_skills.each do |waiter_skill| %>
+  <div>
+    <% if policy(waiter_skill).destroy? %>
+      <%= link_to waiter_skill, :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+        <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+      <% end %>
+    <% end %>
+    <%= waiter_skill.title %>
+  </div>
+<% end %>

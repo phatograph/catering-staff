@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CateringStaff</title>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Catering Staff", root_path, :class => 'navbar-brand' %>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li>
+                <p class="navbar-text">
+                <%= current_user.full_name %>
+                <% if current_user.admin? %>
+                  <i class="fa fa-star"></i>
+                <% end %>
+                </p>
+              </li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <% if flash[:error].present? %>
+      <div class="alert alert-danger">
+        <div class="container">
+          <%= flash[:error] %>
+        </div>
+      </div>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <div class="footer">
+      Catering Staff &copy; 2014<br />
+      <%= link_to "phatograph.com", 'phatograph.com' %>
+    </div>
+  </body>
+</html>
