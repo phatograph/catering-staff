@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       patch 'remove_skill/:waiter_skill_id',
         :action => 'remove_skill',
         :as => 'remove_skill'
+
+      patch 'add_availability'
     end
   end
 

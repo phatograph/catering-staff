@@ -1,4 +1,5 @@
 class Waiter < User
+  has_many :availabilities
   has_and_belongs_to_many :waiter_skills
 
   def remaining_skills

@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028162604) do
+ActiveRecord::Schema.define(version: 20141029094657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: true do |t|
+    t.integer  "started_day"
+    t.time     "started_time"
+    t.integer  "ended_day"
+    t.time     "ended_time"
+    t.integer  "waiter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "availabilities", ["waiter_id"], name: "index_availabilities_on_waiter_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "title"
