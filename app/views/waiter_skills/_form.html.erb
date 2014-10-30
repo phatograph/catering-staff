@@ -1,14 +1,4 @@
 <%= form_for waiter_skill, :html => {:class => 'form-horizontal' } do |f| %>
-  <div class="form-group">
-    <%= f.label :title, :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-6">
-      <%= f.text_field :title, :class => 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-      <%= f.submit 'Save', :class => 'btn btn-primary' %>
-      <%= link_to "Back", :back, :class => 'btn btn-link' %>
-    </div>
-  </div>
+  <%= h_form_group_text(f, :title) %>
+  <%= h_form_group_submit(f) %>
 <% end %>
