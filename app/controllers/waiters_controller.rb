@@ -23,9 +23,6 @@ class WaitersController < ApplicationController
     redirect_to waiter
   end
 
-  def add_availability
-  end
-
 private
 
   def add_skill_params

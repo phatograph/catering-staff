@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 20141029094657) do
   enable_extension "plpgsql"
 
   create_table "availabilities", force: true do |t|
-    t.integer  "started_day"
+    t.integer  "day_of_week"
     t.time     "started_time"
-    t.integer  "ended_day"
     t.time     "ended_time"
     t.integer  "waiter_id"
     t.datetime "created_at"
