@@ -10,8 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :events
+  resources :events do
+    resources :event_positions
+  end
+
   resources :waiter_skills
+
   devise_for :users
   root :to => "home#index"
 end

@@ -1,4 +1,9 @@
 class EventsController < ApplicationController
+  def show
+    @event = Event.find(params[:id])
+    @event_position = @event.event_positions.build
+  end
+
   def new
     @event = Event.new
     authorize @event, :create?

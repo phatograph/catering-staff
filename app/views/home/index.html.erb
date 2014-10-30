@@ -37,7 +37,7 @@
         <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
       <% end %>
     <% end %>
-    <%= event.title %>
+    <%= link_to event.title, event %>
     <% unless event.client.nil? %>
       <code><%= event.client.full_name %></code>
     <% end %>

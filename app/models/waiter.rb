@@ -7,7 +7,11 @@ class Waiter < User
 
     # Only display unobtained skills
     WaiterSkill.all.select do |ws|
-      current_skills.exclude? ws
+      current_skills.exclude?(ws)
     end
+  end
+
+  def remaining_skills_select
+    remaining_skills.map {|x| [x.title, x.id] }
   end
 end

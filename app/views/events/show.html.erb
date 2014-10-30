@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h2>Event <%= @event.title %></h2>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Positions</h3>
+  </div>
+  <div class="panel-body">
+    <% if @event.event_positions.all.empty? %>
+      <div class="alert alert-warning text-center">
+        No records yet.
+      </div>
+    <% else %>
+      <table class="table table-striped">
+        <% @event.event_positions.select(&:persisted?).each do |ep| %>
+          <tr>
+            <td style="width: 50px;">
+              <%= link_to [@event, ep], :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+                <span class="label label-danger">
+                  <i class="fa fa-trash-o"></i>
+                </span>
+              <% end %>
+            </td>
+            <td style="width: 100px;">€ <%= ep.allowance %></td>
+            <td><%= ep.waiter_skill.title %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <div style="padding-top: 10px">
+      <%= form_for [@event, @event_position], :html => {:class => 'form-inline' } do |f| %>
+        <div class="form-group">
+          <label>Add position of</label>
+          <%= f.select :waiter_skill_id, WaiterSkill.waiter_skills_select, {}, {:class => 'form-control' } %>
+          <label>and €</label>
+          <%= f.number_field :allowance, :value => 0, :style => 'width: 100px;', :class => 'form-control' %>
+          <label>allowance</label>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Add', :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
