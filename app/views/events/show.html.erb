@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h2>Event <%= @event.title %></h2>
+  <h2>
+    <span class="label label-info">Event</span>
+    <%= @event.title %>
+  </h2>
 </div>
 
 <div class="panel panel-default">
@@ -15,15 +18,23 @@
       <table class="table table-striped">
         <% @event.event_positions.select(&:persisted?).each do |ep| %>
           <tr>
-            <td style="width: 50px;">
+            <td style="width: 70px;">
               <%= link_to [@event, ep], :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
-                <span class="label label-danger">
-                  <i class="fa fa-trash-o"></i>
-                </span>
+                <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+              <% end %>
+              <%= link_to [:edit, @event, ep] do %>
+                <span class="label label-primary"><i class="fa fa-pencil"></i></span>
               <% end %>
             </td>
             <td style="width: 100px;">€ <%= ep.allowance %></td>
-            <td><%= ep.waiter_skill.title %></td>
+            <td style="width: 150px;"><%= ep.waiter_skill.title %></td>
+            <td>
+              <% if ep.waiter.present? %>
+                <%= ep.waiter.full_name %>
+              <% else %>
+                <%= link_to "Assign waiter", [:edit, @event, ep], :class => 'btn btn-default btn-xs' %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>

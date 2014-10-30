@@ -6,6 +6,21 @@ class EventPositionsController < ApplicationController
     redirect_to :back
   end
 
+  def edit
+    @event_position = EventPosition.find(params[:id])
+  end
+
+  def update
+    @event_position = EventPosition.find(params[:id])
+    @event_position.update(permitted_params)
+
+    if @event_position.save
+      redirect_to @event_position.event
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     event_position = EventPosition.find(params[:id])
     event_position.destroy
@@ -18,6 +33,7 @@ private
     params.require(:event_position).permit(
       :waiter_skill_id,
       :allowance,
+      :waiter_id,
     )
   end
 end

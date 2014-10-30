@@ -8,7 +8,7 @@
   <div class="form-group">
     <%= f.label :client, :class => 'col-sm-2 control-label' %>
     <div class="col-sm-6">
-      <%= f.select :client_id, Client.all.collect { |c| [ c.full_name, c.id ] }, {:include_blank => true }, {:class => 'form-control' } %>
+      <%= f.select :client_id, Client.client_select, {:include_blank => true }, {:class => 'form-control' } %>
     </div>
   </div>
   <div class="form-group">
