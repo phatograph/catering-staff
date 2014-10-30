@@ -13,6 +13,9 @@
   <% @waiters.each do |waiter| %>
       <tr>
         <td>
+          <%= link_to edit_user_path(waiter) do %>
+            <span class="label label-primary"><i class="fa fa-pencil"></i></span>
+          <% end %>
           <%= link_to user_path(waiter), :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
             <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
           <% end %>
@@ -86,6 +89,9 @@
 </div>
 <% @clients.each do |client| %>
   <div>
+    <%= link_to edit_user_path(client) do %>
+      <span class="label label-primary"><i class="fa fa-pencil"></i></span>
+    <% end %>
     <%= link_to user_path(client), :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
       <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
     <% end %>

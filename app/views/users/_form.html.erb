@@ -1,0 +1,9 @@
+<%= form_for user, :html => {:class => 'form-horizontal' } do |f| %>
+  <%= h_form_group_text(f, :first_name) %>
+  <%= h_form_group_text(f, :last_name) %>
+  <%= h_form_group_text(f, :email) %>
+  <%= h_form_group_text(f, :staff_number) %>
+  <%= h_form_group_text(f, :address) %>
+  <%= h_form_group_text(f, :telephone_number) %>
+  <%= h_form_group_submit(f) %>
+<% end %>
