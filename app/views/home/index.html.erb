@@ -48,7 +48,7 @@
     <% end %>
     <%= link_to event.title, event %>
     <% unless event.client.nil? %>
-      <code><%= event.client.full_name %></code>
+      for <code><%= event.client.full_name %></code>
     <% end %>
   </div>
 <% end %>
@@ -63,6 +63,9 @@
 </div>
 <% @waiter_skills.each do |waiter_skill| %>
   <div>
+    <%= link_to [:edit, waiter_skill] do %>
+      <span class="label label-primary"><i class="fa fa-pencil"></i></span>
+    <% end %>
     <% if policy(waiter_skill).destroy? %>
       <%= link_to waiter_skill, :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
         <span class="label label-danger"><i class="fa fa-trash-o"></i></span>

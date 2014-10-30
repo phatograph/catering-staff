@@ -14,6 +14,21 @@ class WaiterSkillsController < ApplicationController
     end
   end
 
+  def edit
+    @waiter_skill = WaiterSkill.find(params[:id])
+  end
+
+  def update
+    @waiter_skill = WaiterSkill.find(params[:id])
+    @waiter_skill.update(permitted_params)
+
+    if @waiter_skill.save
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     waiter_skill = WaiterSkill.find(params[:id])
     authorize waiter_skill, :destroy?

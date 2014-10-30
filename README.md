@@ -1,7 +1,7 @@
 # Catering Staff
 
-Optional demo for [Requirements Engineering & System Design (2014-15)](http://apps.maynoothuniversity.ie/courses/?TARGET=MODULE&MODE=VIEW&MODULE_CODE=CS607&YEAR=2012).
-A web application for Personnel Mangement System.
+Optional demo for [Requirements Engineering & System Design](http://apps.maynoothuniversity.ie/courses/?TARGET=MODULE&MODE=VIEW&MODULE_CODE=CS607&YEAR=2012).
+at NUIM (2014-15). A web application for Staff Mangement System.
 
 ### Further improvements
 
