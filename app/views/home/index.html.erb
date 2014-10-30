@@ -5,12 +5,18 @@
   <tr>
     <th></th>
     <th></th>
+    <th></th>
     <% WaiterSkill.all.each do |ws| %>
       <th class="text-center"><%= ws.title %></th>
     <% end %>
   </tr>
   <% @waiters.each do |waiter| %>
       <tr>
+        <td>
+          <%= link_to user_path(waiter), :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+            <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+          <% end %>
+        </td>
         <td>
           <%= link_to waiter do %>
             <%= waiter.full_name %>
@@ -79,5 +85,10 @@
   <h2>Clients</h2>
 </div>
 <% @clients.each do |client| %>
-  <div><%= client.full_name %> <code><%= client.email %></code></div>
+  <div>
+    <%= link_to user_path(client), :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+      <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+    <% end %>
+    <%= client.full_name %> <code><%= client.email %></code>
+  </div>
 <% end %>
