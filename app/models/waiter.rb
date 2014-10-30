@@ -15,7 +15,9 @@ class Waiter < User
     remaining_skills.map {|x| [x.title, x.id] }
   end
 
-  def self.waiters_select
-    all.collect {|x| [ x.full_name, x.id ] }
+  def self.waiters_select(waiter_skill)
+    all.select do |waiter|
+      waiter_skill.acquired?(waiter)
+    end.collect {|x| [ x.full_name, x.id ] }
   end
 end

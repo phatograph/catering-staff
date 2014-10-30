@@ -15,7 +15,7 @@
   <div class="form-group">
     <%= f.label :waiter, :class => 'col-sm-2 control-label' %>
     <div class="col-sm-6">
-      <%= f.select :waiter_id, Waiter.waiters_select, {:include_blank => true }, {:class => 'form-control' } %>
+      <%= f.select :waiter_id, Waiter.waiters_select(@event_position.waiter_skill), {:include_blank => true }, {:class => 'form-control' } %>
     </div>
   </div>
   <div class="form-group">

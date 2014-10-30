@@ -1,21 +1,30 @@
 <div class="page-header">
   <h2>Waiters</h2>
 </div>
-<% @waiters.each do |waiter| %>
-  <div>
-    <%= link_to waiter do %>
-      <%= waiter.full_name %>
-      <% end %>
-    <code><%= waiter.email %></code>
-  </div>
-<% end %>
-
-<div class="page-header">
-  <h2>Clients</h2>
-</div>
-<% @clients.each do |client| %>
-  <div><%= client.full_name %> <code><%= client.email %></code></div>
-<% end %>
+<table class="table table-striped">
+  <tr>
+    <th></th>
+    <th></th>
+    <% WaiterSkill.all.each do |ws| %>
+      <th class="text-center"><%= ws.title %></th>
+    <% end %>
+  </tr>
+  <% @waiters.each do |waiter| %>
+      <tr>
+        <td>
+          <%= link_to waiter do %>
+            <%= waiter.full_name %>
+          <% end %>
+        </td>
+        <td>
+          <code><%= waiter.email %></code>
+        </td>
+        <% WaiterSkill.all.each do |ws| %>
+          <td class="text-center"><% if ws.acquired?(waiter) %><i class="fa fa-check-circle text-success"></i><% end %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
 
 <div class="page-header">
   <h2>
@@ -61,4 +70,11 @@
     <% end %>
     <%= waiter_skill.title %>
   </div>
+<% end %>
+
+<div class="page-header">
+  <h2>Clients</h2>
+</div>
+<% @clients.each do |client| %>
+  <div><%= client.full_name %> <code><%= client.email %></code></div>
 <% end %>
