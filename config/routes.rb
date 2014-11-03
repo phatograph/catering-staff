@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :users
+  resources :waiter_skills
+
   resources :waiters do
     resources :availabilities
 
@@ -15,8 +19,5 @@ Rails.application.routes.draw do
     resources :event_positions
   end
 
-  resources :waiter_skills
-
-  devise_for :users
   root :to => "home#index"
 end

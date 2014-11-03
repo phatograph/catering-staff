@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h2>Waiters</h2>
+  <h2>
+    Waiters
+    <%= link_to "Add waiter", new_user_path(:class => Waiter), :class => 'btn btn-success' %>
+  </h2>
 </div>
 <table class="table table-striped">
   <tr>
@@ -85,7 +88,10 @@
 <% end %>
 
 <div class="page-header">
-  <h2>Clients</h2>
+  <h2>
+    Clients
+    <%= link_to "Add client", new_user_path(:type => Client), :class => 'btn btn-success' %>
+  </h2>
 </div>
 <% @clients.each do |client| %>
   <div>
@@ -96,5 +102,23 @@
       <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
     <% end %>
     <%= client.full_name %> <code><%= client.email %></code>
+  </div>
+<% end %>
+
+<div class="page-header">
+  <h2>
+    Admins
+    <%= link_to "Add admin", new_user_path(:type => Admin), :class => 'btn btn-success' %>
+  </h2>
+</div>
+<% @admins.each do |admin| %>
+  <div>
+    <%= link_to edit_user_path(admin) do %>
+      <span class="label label-primary"><i class="fa fa-pencil"></i></span>
+    <% end %>
+    <%= link_to user_path(admin), :method => :delete, :data => {:confirm => 'Are you sure?' } do %>
+      <span class="label label-danger"><i class="fa fa-trash-o"></i></span>
+    <% end %>
+    <%= admin.full_name %> <code><%= admin.email %></code>
   </div>
 <% end %>

@@ -5,6 +5,9 @@ class WaitersController < ApplicationController
     @availability = @waiter.availabilities.build
   end
 
+  def new
+  end
+
   def add_skill
     waiter_skill = WaiterSkill.find(add_skill_params[:waiter_skills])
     waiter = Waiter.find(params[:id])
